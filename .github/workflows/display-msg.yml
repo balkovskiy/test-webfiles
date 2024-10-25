@@ -1,0 +1,23 @@
+name: Display test message
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+
+
+jobs:
+  crawling:
+    runs-on: ubuntu-latest
+    permissions: read-all
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Display message
+        uses: balkovskiy/ms-oss-pytest-services-bp@v1
+        with:
+          message: "test"
